@@ -17,12 +17,12 @@ public class UniversityController {
     @Autowired
     public UniversityService universityService;
 
-    @GetMapping("/universities")
+    @GetMapping(value = "/universities", params = "{name}")
     public ResponseEntity<List<University>> getUniversities(@RequestParam(value = "name") List<String> name){
         return new ResponseEntity<>(universityService.getUniversityListByCountry(name), HttpStatus.OK);
     }
 
-    @GetMapping("/universities/search")
+    @GetMapping("/universities")
     public ResponseEntity<List<University>> getUniversities(){
         return new ResponseEntity<>(universityService.getUniversityList(), HttpStatus.OK);
     }
